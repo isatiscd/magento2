@@ -1,2 +1,3 @@
-# gitlab_feature_tests
+# Isatis Team Online - CD images
 
+docker build -t build-ci:latest .
