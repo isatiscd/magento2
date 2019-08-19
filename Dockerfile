@@ -3,12 +3,13 @@ FROM php:7.2-fpm
 # Install dependencies
 RUN apt-get update \
   && apt-get install -y \
+    git \
     libfreetype6-dev \ 
     libicu-dev \ 
     libjpeg62-turbo-dev \ 
     libmcrypt-dev \ 
     libpng-dev \ 
-    libxslt1-dev \ 
+    libxslt1-dev \
     sendmail-bin \ 
     sendmail \
     ssh \
