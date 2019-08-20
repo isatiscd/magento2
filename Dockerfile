@@ -40,17 +40,23 @@ RUN mv composer.phar /usr/local/bin/composer && \
 RUN command -v composer
 
 # Node.js
-RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-RUN apt-get install nodejs -y
-RUN npm install npm@6.9.0 -g
-RUN command -v node
-RUN command -v npm
+# install nvm
+# https://github.com/creationix/nvm#install-script
+
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 10.16.0
+RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+
+# install node and npm
+RUN source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
 
 # Install Xdebug (but don't enable)
 #RUN pecl install -o -f xdebug
 
-ENV PHP_MEMORY_LIMIT 2G
+#ENV PHP_MEMORY_LIMIT 2G
 ENV PHP_ENABLE_XDEBUG false
 ENV MAGENTO_ROOT /usr/share/nginx/html
 
@@ -66,7 +72,7 @@ ENV UPDATE_UID_GID false
 
 #ENTRYPOINT ["/docker-entrypoint.sh"]
 
-ENV MAGENTO_RUN_MODE developer
+#ENV MAGENTO_RUN_MODE developer
 ENV UPLOAD_MAX_FILESIZE 64M
 
 #ADD etc/php-fpm.ini /usr/local/etc/php/conf.d/zz-magento.ini
