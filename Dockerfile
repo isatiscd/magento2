@@ -58,6 +58,8 @@ RUN source $NVM_DIR/nvm.sh \
     && nvm alias default $NODE_VERSION \
     && nvm use default
 
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+
 # install yarn global
 RUN npm i yarn -g
 
