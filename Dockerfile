@@ -1,7 +1,5 @@
 FROM php:7.2-fpm
 
-# Replace shell with bash so we can source files
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Install dependencies
 RUN apt-get update \
@@ -47,6 +45,9 @@ RUN command -v composer
 
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 10.16.0
+
+# Replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 # install node and npm
