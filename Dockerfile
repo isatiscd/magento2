@@ -4,6 +4,7 @@ FROM php:7.2-fpm
 # Install dependencies
 RUN apt-get update \
   && apt-get install -y \
+    curl \
     git \
     libfreetype6-dev \ 
     libicu-dev \ 
@@ -49,10 +50,10 @@ ENV NODE_VERSION 10.16.0
 # Replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 
 RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" &&  nvm use v${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
 RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
 RUN cp /root/.nvm/versions/node/v${NODE_VERSION}/bin/node /usr/bin/
 RUN cp /root/.nvm/versions/node/v${NODE_VERSION}/bin/npm /usr/bin/
