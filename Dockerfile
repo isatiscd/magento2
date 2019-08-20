@@ -45,7 +45,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # nvm environment variables
 ENV NVM_DIR /usr/local/nvm
-RUN mkdir NVM_DIR
+RUN mkdir $NVM_DIR
 ENV NODE_VERSION 10.16.0
 
 # install nvm
