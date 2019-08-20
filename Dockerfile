@@ -1,5 +1,8 @@
 FROM php:7.2-fpm
 
+# Replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
 # Install dependencies
 RUN apt-get update \
   && apt-get install -y \
@@ -31,9 +34,6 @@ RUN docker-php-ext-install \
   soap \ 
   bcmath
 
-# Replace shell with bash so we can source files
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer && \
@@ -45,15 +45,18 @@ RUN command -v composer
 # install nvm
 # https://github.com/creationix/nvm#install-script
 
-ENV NVM_DIR ~/.nvm
+ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 10.16.0
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
+RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 # install node and npm
 RUN source $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
     && nvm use default
+
+# install yarn global
+RUN npm i yarn -g
 
 # Install Xdebug (but don't enable)
 #RUN pecl install -o -f xdebug
