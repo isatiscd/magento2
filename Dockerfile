@@ -60,6 +60,12 @@ RUN source $NVM_DIR/nvm.sh \
 
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 
+RUN nvm install npm
+
+RUN node -v
+RUN nvm -v
+RUN npm -v
+
 # install yarn global
 RUN npm i yarn -g
 
