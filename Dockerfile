@@ -43,18 +43,20 @@ RUN command -v composer
 # install nvm
 # https://github.com/creationix/nvm#install-script
 
-ENV NVM_DIR /usr/local/nvm
+ENV NVM_DIR=/root/.nvm
 ENV NODE_VERSION 10.16.0
 
 # Replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-# install node and npm
-RUN source $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
+RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+
+RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" &&  nvm use v${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
+RUN cp /root/.nvm/versions/node/v${NODE_VERSION}/bin/node /usr/bin/
+RUN cp /root/.nvm/versions/node/v${NODE_VERSION}/bin/npm /usr/bin/
+RUN /root/.nvm/versions/node/v${NODE_VERSION}/bin/npm install  leasot@latest -g
 
 # install yarn global
 RUN npm i yarn -g
