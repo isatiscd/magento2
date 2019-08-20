@@ -43,7 +43,7 @@ RUN command -v composer
 # install nvm
 # https://github.com/creationix/nvm#install-script
 
-ENV NVM_DIR /usr/local/nvm
+ENV NVM_DIR ~/.nvm
 ENV NODE_VERSION 10.16.0
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
