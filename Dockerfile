@@ -40,22 +40,16 @@ RUN mv composer.phar /usr/local/bin/composer && \
     composer self-update --preview
 RUN command -v composer
 
-# Node.js
-# install nvm
-# https://github.com/creationix/nvm#install-script
-
-ENV NVM_DIR=/root/.nvm
-ENV NODE_VERSION 10.16.0
-
 # Replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
 # nvm environment variables
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 4.4.7
 
 # install nvm
 # https://github.com/creationix/nvm#install-script
-RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+RUN curl --silent -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 # install node and npm
 RUN source $NVM_DIR/nvm.sh \
