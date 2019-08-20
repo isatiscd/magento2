@@ -45,7 +45,7 @@ RUN command -v composer
 
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 10.16.0
-RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 # install node and npm
 RUN source $NVM_DIR/nvm.sh \
