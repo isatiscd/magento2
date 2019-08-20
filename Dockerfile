@@ -20,7 +20,6 @@ RUN docker-php-ext-configure \
   gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 
 # Install required PHP extensions
-
 RUN docker-php-ext-install \
   dom \ 
   gd \ 
@@ -31,6 +30,9 @@ RUN docker-php-ext-install \
   zip \ 
   soap \ 
   bcmath
+
+# Replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php
@@ -43,7 +45,7 @@ RUN command -v composer
 # install nvm
 # https://github.com/creationix/nvm#install-script
 
-ENV NVM_DIR ~/.nvm
+ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 10.16.0
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
