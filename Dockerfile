@@ -1,4 +1,4 @@
-FROM node:10-stretch
+FROM node:8-stretch
 
 # Let the container know that there is no tty
 ENV DEBIAN_FRONTEND noninteractive
@@ -12,7 +12,7 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_DISABLE_XDEBUG_WARN 1
 
 ADD / /
-RUN /scripts/install-essentials.sh
+RUN /scripts/install-essentials
 RUN /scripts/install-python.sh
 RUN /scripts/install-pip.sh
 #RUN /scripts/install-aws-cli
