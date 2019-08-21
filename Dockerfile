@@ -12,8 +12,6 @@ RUN apt-get update \
     libmcrypt-dev \ 
     libpng-dev \ 
     libxslt1-dev \
-    node \
-    npm \
     sendmail-bin \ 
     sendmail \
     ssh \
