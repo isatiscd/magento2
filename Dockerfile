@@ -11,13 +11,17 @@ ENV COMPOSER_NO_INTERACTION 1
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_DISABLE_XDEBUG_WARN 1
 
+RUN ["chmod", "+x", "/scripts/*.*"]
+
 ADD / /
-ENTRYPOINT ["sh", "/scripts/install-essentials.sh"]
-ENTRYPOINT ["sh", "/scripts/install-python.sh"]
-ENTRYPOINT ["sh", "/scripts/install-pip.sh"]
-ENTRYPOINT ["sh", "/scripts/install-node-tools.sh"]
-ENTRYPOINT ["sh", "/scripts/install-php72.sh"]
-ENTRYPOINT ["sh", "/scripts/install-composer.sh"]
+
+RUN /scripts/install-essentials.sh
+RUN /scripts/install-python.sh
+RUN /scripts/install-pip.sh
+#RUN /scripts/install-aws-cli
+RUN /scripts/install-node-tools.sh
+RUN /scripts/install-php72.sh
+RUN /scripts/install-composer.sh
 
 # Show versions
 RUN node --version && \
