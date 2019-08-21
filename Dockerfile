@@ -12,6 +12,8 @@ RUN apt-get update \
     libmcrypt-dev \ 
     libpng-dev \ 
     libxslt1-dev \
+    node \
+    npm \
     sendmail-bin \ 
     sendmail \
     ssh \
@@ -44,25 +46,25 @@ RUN command -v composer
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # nvm environment variables
-ENV NVM_DIR ~/.nvm
-RUN mkdir $NVM_DIR
-ENV NODE_VERSION 10.16.0
+#ENV NVM_DIR ~/.nvm
+#RUN mkdir $NVM_DIR
+#ENV NODE_VERSION 10.16.0
 
 # install nvm
 # https://github.com/creationix/nvm#install-script
-RUN curl --silent -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash \
-    && . $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
+#RUN curl --silent -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash \
+#    && . $NVM_DIR/nvm.sh \
+#    && nvm install $NODE_VERSION \
+#    && nvm alias default $NODE_VERSION \
+#    && nvm use default
 
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
+#ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+#ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
 
 RUN node -v
-RUN nvm -v
-RUN nvm install npm
+#RUN nvm -v
+#RUN nvm install npm
 RUN npm -v
 
 # install yarn global
