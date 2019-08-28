@@ -13,13 +13,14 @@ ENV COMPOSER_DISABLE_XDEBUG_WARN 1
 
 ADD / /
 
-RUN /install-essentials.sh
-RUN /install-python.sh
-RUN /install-pip.sh
+RUN cat /scripts/install-essentials.sh
+RUN /scripts/install-essentials.sh
+RUN /scripts/install-python.sh
+RUN /scripts/install-pip.sh
 #RUN /scripts/install-aws-cli
-RUN /install-node-tools.sh
-RUN /install-php72.sh
-RUN /install-composer.sh
+RUN /scripts/install-node-tools.sh
+RUN /scripts/install-php72.sh
+RUN /scripts/install-composer.sh
 
 # Show versions
 RUN node --version && \
