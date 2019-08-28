@@ -1,4 +1,4 @@
-FROM node:8-stretch
+FROM node:10-stretch
 
 # Let the container know that there is no tty
 ENV DEBIAN_FRONTEND noninteractive
@@ -13,7 +13,6 @@ ENV COMPOSER_DISABLE_XDEBUG_WARN 1
 
 ADD / /
 
-RUN cat /scripts/install-essentials.sh
 RUN /scripts/install-essentials.sh
 RUN /scripts/install-python.sh
 RUN /scripts/install-pip.sh
