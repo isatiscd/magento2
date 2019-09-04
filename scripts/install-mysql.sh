@@ -6,8 +6,8 @@ apt-get update -q
 apt-get install -y \
    mysql-server
 
-UPDATE mysql.user SET authentication_string = PASSWORD('isatis') WHERE User = 'root';
-FLUSH PRIVILEGES;
+#UPDATE mysql.user SET authentication_string = PASSWORD('isatis') WHERE User = 'root';
+#FLUSH PRIVILEGES;
 
 CREATE DATABASE testdb;
 
