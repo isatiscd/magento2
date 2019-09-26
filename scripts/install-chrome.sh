@@ -5,7 +5,7 @@ set -xe
 apt-get update -q
 apt-get upgrade -y
 apt-get install -y \
-    libappindicator1 \
+    libappindicator3 \
     fonts-liberation \
     libasound2 \
     libgconf-2-4 \
