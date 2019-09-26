@@ -39,7 +39,7 @@ apt-get install -y \
     libxtst6 \
     ca-certificates \
     fonts-liberation \
-    libappindicator1 \
+    libappindicator3-1 \
     libnss3 \
     lsb-release \
     xdg-utils
