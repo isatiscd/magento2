@@ -1,4 +1,4 @@
-FROM node:8-stretch
+FROM node:10-stretch
 
 # Let the container know that there is no tty
 ENV DEBIAN_FRONTEND noninteractive
