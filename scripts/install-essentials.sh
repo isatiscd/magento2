@@ -9,6 +9,7 @@ apt-get install -y \
     apt-utils \
     curl \
     git \
+    vim \
     rsync \
     zip \
     unzip \
