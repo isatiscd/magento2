@@ -2,8 +2,8 @@
 set -xe
 
 # Add sury repository
-echo "deb https://packages.sury.org/php/ bust main" > /etc/apt/sources.list.d/php.list
-echo "deb-src https://packages.sury.org/php/ bust main" >> /etc/apt/sources.list.d/php.list
+echo "deb https://packages.sury.org/php/ buster main" > /etc/apt/sources.list.d/php.list
+echo "deb-src https://packages.sury.org/php/ buster main" >> /etc/apt/sources.list.d/php.list
 wget -O- "https://packages.sury.org/php/apt.gpg" | apt-key add -
 
 # Install PHP 7 and its modules
