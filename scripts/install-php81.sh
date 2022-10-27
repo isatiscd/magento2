@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -xe
-
+#test
 # Add sury repository
 echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list
 echo "deb-src https://packages.sury.org/php/ stretch main" >> /etc/apt/sources.list.d/php.list
