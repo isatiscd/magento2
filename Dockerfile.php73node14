@@ -20,7 +20,7 @@ RUN /scripts/install-python.sh
 RUN /scripts/install-node-tools.sh
 RUN /scripts/install-php73.sh
 RUN /scripts/install-composer.sh
-RUN /scripts/install-composer-parallel.sh
+#RUN /scripts/install-composer-parallel.sh
 
 # Show versions
 RUN node --version && \
