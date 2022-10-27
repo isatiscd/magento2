@@ -10,6 +10,7 @@ apt-get install -y \
     curl \
     git \
     zip \
+    python\
     unzip \
     libfontconfig
 

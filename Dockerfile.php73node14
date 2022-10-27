@@ -15,7 +15,7 @@ ADD / /
 
 RUN /scripts/install-essentials.sh
 RUN /scripts/install-python.sh
-RUN /scripts/install-pip.sh
+#RUN /scripts/install-pip.sh
 #RUN /scripts/install-aws-cli
 RUN /scripts/install-node-tools.sh
 RUN /scripts/install-php73.sh
