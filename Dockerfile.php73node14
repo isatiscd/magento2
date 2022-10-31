@@ -18,7 +18,7 @@ RUN /scripts/install-python.sh
 #RUN /scripts/install-pip.sh
 #RUN /scripts/install-aws-cli
 RUN /scripts/install-node-tools.sh
-RUN /scripts/install-php73.sh
+RUN /scripts/install-php74.sh
 RUN /scripts/install-composer.sh
 #RUN /scripts/install-composer-parallel.sh
 
